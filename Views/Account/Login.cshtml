@@ -1,0 +1,45 @@
+﻿@model CourseProject.ViewModels.LoginViewModel
+@{
+	ViewData["Title"] = "Вход";
+}
+
+<br />
+<h1 class="row justify-content-center">@ViewData["Title"]</h1>
+<div class="row justify-content-center">
+	<div class="col-md-4">
+		<section>
+			<form id="registerForm" method="post" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
+				<h4 class="row justify-content-center">Используйте учетную запись для входа.</h4>
+				<hr />
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+				<div class="form-floating">
+					<input asp-for="UserName" placeholder="Email" class="form-control" autocomplete="email" aria-required="true" />
+					<label asp-for="UserName"></label>
+					<span asp-validation-for="UserName" class="text-danger"></span>
+				</div>
+				<div class="form-floating">
+					<input asp-for="Password" placeholder="Password" class="form-control" autocomplete="name" aria-required="true" />
+					<label asp-for="Password"></label>
+					<span asp-validation-for="Password" class="text-danger"></span>
+				</div>
+				<div>
+					<div class="checkbox">
+						<label asp-for="RememberMe" class="form-label">
+							<input class="form-check-input" asp-for="RememberMe" />
+							@Html.DisplayNameFor(m => m.RememberMe)
+						</label>
+					</div>
+				</div>
+				<div>
+					<button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Войти</button>
+				</div>
+			</form>
+		</section>
+	</div>
+</div>
+
+@*@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}
+*@
